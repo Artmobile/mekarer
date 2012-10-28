@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns		= "http://www.w3.org/ns/widgets"
+	xmlns:gap	= "http://phonegap.com/ns/1.0"
+	id		= "com.burke.www"
+	version 	= "1.0.0">
+
+	<name>Reddits</name>
+
+	<description>
+		A super simple application for testing Phonegap Build With Kendo UI Mobile
+	</description>
+
+	<author href="http://a.shinynew.me"
+		email="burkeholland@gmail.com">
+		Burke Holland
+	</author>
+
+	<icon src="icon.png" gap:role="default" />
+
+	<feature name="http://api.phonegap.com/1.0/network"/>
+
+	<preference name="orientation" value="portrait" />
+</widget>
