@@ -1,5 +1,40 @@
 // JavaScript Document
 
+// this global variable is where all the script goes so that
+// it doesn't polute the global namespace
+var MYAPP = MYAPP || {};
+
+MYAPP.run = (function() {
+	// create the Kendo UI Mobile application
+    MYAPP.app = new kendo.mobile.Application(document.body, { transition: "slide" }); 
+});
+
+var fragments     = []
+
+// this is the function returns a Kendo UI DataSource
+// which reads the top threads off of the programming.reddit
+// datasource
+var dataSource = new kendo.data.DataSource({
+            data: fragments,
+            pageSize: 48
+});
+
+$(function(){
+    $.getJSON("http://yworker.herokuapp.com/apa/jeans", function(data){
+        $.each(data.data, function(key, val){
+            fragments.push(val);
+        });
+
+        dataSource.read();
+    });
+})
+
+// this is called when the intial view shows. it prevents the flash
+// of unstyled content (FOUC)
+MYAPP.show = (function() {
+	$(document.body).show();
+});
+
 // Wait for PhoneGap to load
 document.addEventListener("deviceready", onDeviceReady, false);
 
