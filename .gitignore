@@ -1,5 +1,6 @@
 phonegap.js
 lib-cov
+*.apk
 *.seed
 *.log
 *.csv
