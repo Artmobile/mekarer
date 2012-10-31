@@ -22,8 +22,6 @@ gp="c2l4cGVuczE=".unpack("m")[0] #get_password("Enter Github  password")
 APIcall="#{APIPATH}/#{project}"
 buildCreds="#{username}:#{bp}";
 
-puts buildCreds
-
 ##commit changes
 puts "Forcing changes to github";
 `cd #{appPath}`
