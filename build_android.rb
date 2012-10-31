@@ -36,7 +36,7 @@ def rebuild()
 
 	ttl = blob['title']
 	package = blob['package']
-	puts package['title']
+	puts blob
 
 	##Request Rebuild
 	puts "Requesting Rebuild."
