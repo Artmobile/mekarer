@@ -42,7 +42,7 @@ request=`curl -s -u #{creds} -X PUT -d 'data={"pull":"true"}' #{APIcall}`
 puts "Done. "
 donecheck=""
 
-print "Waiting for PhoneGap build to finsih rebuild"
+print "Waiting for PhoneGap build to finsih rebuild -->"
 
 until JSON.parse(`curl -s -u #{creds}  #{APIcall}`)['status']['android'] == "complete"
 	print "."
