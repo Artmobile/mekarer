@@ -37,9 +37,6 @@ def rebuild()
 	ttl = blob['title']
 	package = blob['package']
 	
-	puts ttl
-	puts package
-
 	##Request Rebuild
 	puts "Requesting Rebuild."
 	request=`curl -s -u #{$creds} -X PUT -d 'data={"pull":"true"}' #{$APIcall}`
@@ -57,8 +54,12 @@ def rebuild()
 
 	download=`curl -L -s -u #{$creds} -o #{ttl}-debug.apk #{$FILEPATH}/#{$project}/download/android`
 
+	puts "Removing previos installation."
 	`adb uninstall #{package}`
+	puts "Done."
+	puts "Installing the APK package."
 	`adb install -r #{ttl}-debug.apk`
+	puts "Done."
 end
 
 Dir.chdir("#{projectPath}") do 
