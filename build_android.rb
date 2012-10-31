@@ -34,9 +34,9 @@ def rebuild()
 
 	blob=`curl -s -u #{$creds} #{$APIcall}`
 
-	puts blob['title']
 	ttl = blob['title']
 	package = blob['package']
+	puts package['title']
 
 	##Request Rebuild
 	puts "Requesting Rebuild."
