@@ -49,11 +49,12 @@ def rebuild()
 	end	
 
 	puts "]"
-	puts "Done. Now downloading."
+	puts "Done."
 	puts
 	puts
 
-	download=`curl -L -s -u #{$creds} -o #{ttl}-debug.apk #{$FILEPATH}/#{$project}/download/android`
+	puts "Now downloading"
+	`curl -L -u #{$creds} -o #{ttl}-debug.apk #{$FILEPATH}/#{$project}/download/android`
 
 	print "Removing previos installation. "
 	`adb uninstall #{package}`
