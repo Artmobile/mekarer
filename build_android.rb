@@ -43,7 +43,7 @@ puts "Done. "
 donecheck=""
 
 
-while status=JSON.parse(`curl -s -u #{creds}  #{APIcall}`)['status']['android']	!= "complete"
+until JSON.parse(`curl -s -u #{creds}  #{APIcall}`)['status']['android'] == "complete"
 	puts "."
 	sleep(0.1)
 end	
