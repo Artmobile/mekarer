@@ -18,7 +18,7 @@ def get_password(prompt="Enter Password")
 end
 
 ##commit changes
-print "Forcing changes to github. "
+puts "Forcing changes to github. "
 `cd #{appPath}`
 `git add .`
 `git commit -m "auto commit as part of script"`
