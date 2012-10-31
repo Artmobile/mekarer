@@ -41,7 +41,7 @@ def rebuild()
 	puts
 	##Request Rebuild
 	print "Requesting Rebuild. "
-	
+
 	request=`curl -s -u #{$creds} -X PUT -d 'data={"pull":"true"}' #{$APIcall}`
 	donecheck=""
 
@@ -59,7 +59,7 @@ def rebuild()
 	puts "Now downloading the new package:"
 	puts
 	`rm "#{ttl}-debug.apk"`
-	`curl -L -u #{$creds} #{$FILEPATH}/#{$project}/download/android > #{ttl}-debug.apk`
+	`curl  --no-sessionid -L -u #{$creds} #{$FILEPATH}/#{$project}/download/android > #{ttl}-debug.apk`
 
 	puts
 	puts
