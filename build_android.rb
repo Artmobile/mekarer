@@ -24,7 +24,8 @@ puts "Forcing changes to github. "
 `git commit -m "auto commit as part of script"`
 `git push origin master`
 puts "Done";
-
+puts
+puts
 def rebuild() 
 
 	##Request Phonegap data
@@ -36,9 +37,9 @@ def rebuild()
 	package = blob['package']
 	
 	##Request Rebuild
-	puts "Requesting Rebuild."
+	print "Requesting Rebuild. "
 	request=`curl -s -u #{$creds} -X PUT -d 'data={"pull":"true"}' #{$APIcall}`
-	print " Done. "
+	puts "Done."
 	donecheck=""
 
 	print "Rebuilding: [-"
@@ -47,7 +48,7 @@ def rebuild()
 		print "-"
 	end	
 
-	print "]"
+	puts "]"
 	puts "Done. Now downloading."
 	puts
 	puts
