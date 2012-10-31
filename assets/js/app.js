@@ -29,7 +29,7 @@ function onDeviceReady() {
             dataSource.read();
         }
         */
-        console.log("Haleluyah!");
+        console.log("Haleluyah! " + data + "\n");
     }).error(function(err){ console.log("Error occurred: " + err); });
 
 
