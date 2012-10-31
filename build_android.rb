@@ -42,14 +42,10 @@ request=`curl -s -u #{creds} -X PUT -d 'data={"pull":"true"}' #{APIcall}`
 puts "Done. "
 donecheck=""
 
-b=JSON.parse(`curl -s -u #{creds}  #{APIcall}`)	
 
-puts b['status']['android']
-
-while donecheck == ""
+while status=JSON.parse(`curl -s -u #{creds}  #{APIcall}`)['status']['android']	!= "complete"
 	puts "."
 	sleep(0.1)
-	donecheck=`curl -s -u #{creds}  #{APIcall} | grep -Po '"android":"complete"'`	
 end	
 
 puts "Done. Now downloading."
