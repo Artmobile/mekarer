@@ -41,12 +41,13 @@ def rebuild()
 	puts
 	##Request Rebuild
 	print "Requesting Rebuild. "
-	request=`curl -u #{$creds} -X PUT -d 'data={"pull":"true"}' #{$APIcall}`
+	echo "curl -s -u #{$creds} -X PUT -d 'data={\"pull\":\"true\"}' #{$APIcall}"
+	request=`curl -s -u #{$creds} -X PUT -d 'data={"pull":"true"}' #{$APIcall}`
 	donecheck=""
 
 	print "Rebuilding: [-"
 
-	until JSON.parse(`curl -s -u #{$creds}  #{$APIcall}`)['status']['android'] == "complete"
+	until JSON.parse(`curl -s -u #{$creds} #{$APIcall}`)['status']['android'] == "complete"
 		print "-"
 	end	
 
