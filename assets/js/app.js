@@ -19,8 +19,9 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 // PhoneGap is ready
 function onDeviceReady() {
+    /*
     $.getJSON("http://yworker.herokuapp.com/apa/jeans", function(data){
-        /*
+        
         if(data){
             $.each(data.data, function(key, val){
                 fragments.push(val);
@@ -28,10 +29,10 @@ function onDeviceReady() {
 
             dataSource.read();
         }
-        */
+        
         console.log("Haleluyah!\n");
     }).error(function(err){ console.log("Error occurred: " + err); });
-
+    */
 
     getLocation();
 }
