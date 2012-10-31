@@ -32,7 +32,7 @@ def rebuild()
 	##Request Phonegap data
 	puts "Requesting Project Data.";
 
-	blob=`curl -s -u #{$creds} #{$APIcall}`
+	blob=JSON.parse(`curl -s -u #{$creds} #{$APIcall}`)
 
 	ttl = blob['title']
 	package = blob['package']
