@@ -25,7 +25,7 @@ puts "Forcing changes to github";
 `git add .`
 `git commit -m "auto commit as part of script"`
 `git push origin master`
-puts "Done";
+print " Done";
 
 def rebuild() 
 
@@ -40,7 +40,7 @@ def rebuild()
 	##Request Rebuild
 	puts "Requesting Rebuild."
 	request=`curl -s -u #{$creds} -X PUT -d 'data={"pull":"true"}' #{$APIcall}`
-	puts "Done. "
+	print " Done. "
 	donecheck=""
 
 	print "Rebuilding: [-"
@@ -51,15 +51,17 @@ def rebuild()
 
 	puts "]"
 	puts "Done. Now downloading."
+	puts
+	puts
 
 	download=`curl -L -s -u #{$creds} -o #{ttl}-debug.apk #{$FILEPATH}/#{$project}/download/android`
 
 	puts "Removing previos installation."
 	`adb uninstall #{package}`
-	puts "Done."
+	print " Done."
 	puts "Installing the APK package."
 	`adb install -r #{ttl}-debug.apk`
-	puts "Done."
+	puts " Done."
 end
 
 Dir.chdir("#{projectPath}") do 
