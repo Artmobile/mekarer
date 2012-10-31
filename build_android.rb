@@ -55,7 +55,7 @@ def rebuild()
 	puts
 	puts
 
-	puts "Now downloading:"
+	puts "Now downloading the new package:"
 	puts
 	`curl -L -u #{$creds} -o #{ttl}-debug.apk #{$FILEPATH}/#{$project}/download/android`
 
