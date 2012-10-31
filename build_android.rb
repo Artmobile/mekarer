@@ -29,31 +29,35 @@ puts "Forcing changes to github";
 `git push origin master`
 puts "Done";
 
-`cd #{projectPath}`
+def rebuild 
+	##Request Phonegap data
+	puts "Requesting Project Data.";
 
-##Request Phonegap data
-puts "Requesting Project Data.";
+	blob=`curl -s -u #{creds} #{APIcall}`
+	title = blob['title']
+	package = blob['package']
 
-blob=`curl -s -u #{creds} #{APIcall}`
-title = blob['title']
-package = blob['package']
+	##Request Rebuild
+	puts "Requesting Rebuild."
+	request=`curl -s -u #{creds} -X PUT -d 'data={"pull":"true"}' #{APIcall}`
+	puts "Done. "
+	donecheck=""
 
-##Request Rebuild
-puts "Requesting Rebuild."
-request=`curl -s -u #{creds} -X PUT -d 'data={"pull":"true"}' #{APIcall}`
-puts "Done. "
-donecheck=""
+	print "[/]"
 
-print "[/]"
+	until JSON.parse(`curl -s -u #{creds}  #{APIcall}`)['status']['android'] == "complete"
+		print "."
+	end	
 
-until JSON.parse(`curl -s -u #{creds}  #{APIcall}`)['status']['android'] == "complete"
-	print "."
-end	
+	puts
+	puts "Done. Now downloading."
 
-puts
-puts "Done. Now downloading."
+	download=`curl -L -s -u #{creds} -o #{title}-debug.apk #{FILEPATH}/#{project}/download/android`
 
-download=`curl -L -s -u #{creds} -o #{title}-debug.apk #{FILEPATH}/#{project}/download/android`
+	`adb uninstall #{package}`
+	`adb install -r ./#{title}-debug.apk`
+end
 
-`adb uninstall #{package}`
-`adb install -r ./#{title}-debug.apk`
+Dir.chdir("#{projectPath}") do 
+	rebuild
+end
