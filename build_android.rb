@@ -12,14 +12,12 @@ $FILEPATH="https://build.phonegap.com/apps/"
 $APIcall="#{$APIPATH}/#{$project}"
 $creds="#{$username}:#{bp}"
 
-
 appPath="d:\\git_wa\\mekarer\\" 
 projectPath="d:\\git_wa\\mekarer\\apk" 
 
 def get_password(prompt="Enter Password")
    ask(prompt) {|q| q.echo = false}
 end
-
 
 ##commit changes
 puts "Forcing changes to github";
@@ -35,7 +33,7 @@ def rebuild()
 	puts "Requesting Project Data.";
 
 	blob=`curl -s -u #{$creds} #{$APIcall}`
-	title = blob['title']
+	ttl = blob['title']
 	package = blob['package']
 
 	##Request Rebuild
@@ -47,16 +45,16 @@ def rebuild()
 	print "[: - "
 
 	until JSON.parse(`curl -s -u #{$creds}  #{$APIcall}`)['status']['android'] == "complete"
-		print "."
+		print "-"
 	end	
 
 	puts "]"
 	puts "Done. Now downloading."
 
-	download=`curl -L -s -u #{$creds} -o #{title}-debug.apk #{$FILEPATH}/#{$project}/download/android`
+	download=`curl -L -s -u #{$creds} -o #{ttl}-debug.apk #{$FILEPATH}/#{$project}/download/android`
 
 	`adb uninstall #{package}`
-	`adb install -r #{title}-debug.apk`
+	`adb install -r #{ttl}-debug.apk`
 end
 
 Dir.chdir("#{projectPath}") do 
