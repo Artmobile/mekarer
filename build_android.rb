@@ -17,10 +17,9 @@ def get_password(prompt="Enter Password")
 end
 
 bp="c2l4cGVucw==".unpack("m")[0] #get_password("Enter PhoneGap Build password")
-gp="c2l4cGVuczE=".unpack("m")[0] #get_password("Enter Github  password")
 
 APIcall="#{APIPATH}/#{project}"
-buildCreds="#{username}:#{bp}";
+creds="#{username}:#{bp}";
 
 ##commit changes
 puts "Forcing changes to github";
@@ -33,7 +32,7 @@ puts "Done";
 ##Request Phonegap data
 puts "Requesting Project Data.";
 
-blob=`curl -s -u #{buildCreds} #{APIcall}`
+blob=`curl -s -u #{creds} #{APIcall}`
 title = blob['title']
 package = blob['package']
 
