@@ -29,7 +29,7 @@ puts "Forcing changes to github";
 `git push origin master`
 puts "Done";
 
-def rebuild() 
+def rebuild(creds) 
 	##Request Phonegap data
 	puts "Requesting Project Data.";
 
@@ -59,5 +59,5 @@ def rebuild()
 end
 
 Dir.chdir("#{projectPath}") do 
-	rebuild()
+	rebuild(creds)
 end
