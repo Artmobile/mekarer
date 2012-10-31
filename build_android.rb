@@ -44,7 +44,7 @@ donecheck=""
 
 
 until JSON.parse(`curl -s -u #{creds}  #{APIcall}`)['status']['android'] == "complete"
-	puts "."
+	print "."
 	sleep(0.1)
 end	
 
