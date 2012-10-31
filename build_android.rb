@@ -29,6 +29,8 @@ puts "Forcing changes to github";
 `git push origin master`
 puts "Done";
 
+`cd #{projectPath}`
+
 ##Request Phonegap data
 puts "Requesting Project Data.";
 
