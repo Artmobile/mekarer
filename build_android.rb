@@ -40,7 +40,7 @@ title = blob['title']
 package = blob['package']
 
 ##Request Rebuild
-echo "Requesting Rebuild.";
+puts "Requesting Rebuild."
 request=`curl -s -u $creds -X PUT -d 'data={"pull":"true"}' #{APIcall}`
 puts "Done. "
 donecheck=""
