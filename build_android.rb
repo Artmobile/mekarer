@@ -35,11 +35,13 @@ def rebuild()
 
 	ttl = blob['title']
 	package = blob['package']
+
+	puts "Title => " + ttl
+	puts "Package => " + package
 	
 	##Request Rebuild
 	print "Requesting Rebuild. "
 	request=`curl -s -u #{$creds} -X PUT -d 'data={"pull":"true"}' #{$APIcall}`
-	puts "Done."
 	donecheck=""
 
 	print "Rebuilding: [-"
@@ -53,9 +55,15 @@ def rebuild()
 	puts
 	puts
 
-	puts "Now downloading"
+	puts "Now downloading:"
+	puts
 	`curl -L -u #{$creds} -o #{ttl}-debug.apk #{$FILEPATH}/#{$project}/download/android`
 
+	puts
+	puts
+
+	puts "Will push the new package into the emulator..."
+	puts
 	print "Removing previos installation. "
 	`adb uninstall #{package}`
 	puts "Done."
