@@ -41,7 +41,7 @@ def rebuild()
 	puts
 	##Request Rebuild
 	print "Requesting Rebuild. "
-	echo "curl -s -u #{$creds} -X PUT -d 'data={\"pull\":\"true\"}' #{$APIcall}"
+	
 	request=`curl -s -u #{$creds} -X PUT -d 'data={"pull":"true"}' #{$APIcall}`
 	donecheck=""
 
