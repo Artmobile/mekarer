@@ -2,7 +2,7 @@
 
 var fragments     = []
 
-/*
+
 // this is the function returns a Kendo UI DataSource
 // which reads the top threads off of the programming.reddit
 // datasource
@@ -13,14 +13,16 @@ var dataSource = new kendo.data.DataSource({
 
 $(function(){
     $.getJSON("http://yworker.herokuapp.com/apa/jeans", function(data){
-        $.each(data.data, function(key, val){
-            fragments.push(val);
-        });
+        if(data){
+            $.each(data.data, function(key, val){
+                fragments.push(val);
+            });
 
-        dataSource.read();
-    });
+            dataSource.read();
+        }
+    }).error(function(err){ console.log("Error occurred: " + err); });
 })
-*/
+
 
 // Wait for PhoneGap to load
 document.addEventListener("deviceready", onDeviceReady, false);
