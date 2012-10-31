@@ -1,5 +1,5 @@
 require 'rubygems'
-require 'highline/import'
+require 'highline/import' # gem install highline, needed for get_password
 require 'json'
 require 'base64'
 
