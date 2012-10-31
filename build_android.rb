@@ -33,6 +33,8 @@ def rebuild()
 	puts "Requesting Project Data.";
 
 	blob=`curl -s -u #{$creds} #{$APIcall}`
+
+	puts blob
 	ttl = blob['title']
 	package = blob['package']
 
@@ -42,7 +44,7 @@ def rebuild()
 	puts "Done. "
 	donecheck=""
 
-	print "[: -"
+	print "Rebuilding: [-"
 
 	until JSON.parse(`curl -s -u #{$creds}  #{$APIcall}`)['status']['android'] == "complete"
 		print "-"
