@@ -44,7 +44,7 @@ donecheck=""
 
 b=`curl -s -u #{creds}  #{APIcall}`	
 
-puts b
+puts b['status']['android']
 while donecheck == ""
 	puts "."
 	sleep(0.1)
