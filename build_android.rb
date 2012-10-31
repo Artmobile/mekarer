@@ -35,10 +35,10 @@ def rebuild()
 
 	ttl = blob['title']
 	package = blob['package']
-
-	puts "Title => " + ttl
-	puts "Package => " + package
-	
+	puts
+	puts "	Title => " + ttl
+	puts "	Package => " + package
+	puts
 	##Request Rebuild
 	print "Requesting Rebuild. "
 	request=`curl -s -u #{$creds} -X PUT -d 'data={"pull":"true"}' #{$APIcall}`
