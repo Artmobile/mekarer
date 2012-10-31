@@ -42,7 +42,7 @@ def rebuild()
 	puts "Done. "
 	donecheck=""
 
-	print "[: - "
+	print "[: -"
 
 	until JSON.parse(`curl -s -u #{$creds}  #{$APIcall}`)['status']['android'] == "complete"
 		print "-"
