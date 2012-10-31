@@ -39,19 +39,19 @@ package = blob['package']
 
 ##Request Rebuild
 puts "Requesting Rebuild."
-request=`curl -s -u $creds -X PUT -d 'data={"pull":"true"}' #{APIcall}`
+request=`curl -s -u #{creds} -X PUT -d 'data={"pull":"true"}' #{APIcall}`
 puts "Done. "
 donecheck=""
 
 while donecheck == ""
 	puts "."
 	sleep(0.1)
-	donecheck=`curl -s -u $creds  $APIcall | grep -Po '"android":"complete"'`	
+	donecheck=`curl -s -u #{creds}  #{APIcall} | grep -Po '"android":"complete"'`	
 end	
 
 puts "Done. Now downloading."
 
-download=`curl -L -s -u $creds -o #{title}-debug.apk #{FILEPATH}/#{project}/download/android)`
+download=`curl -L -s -u #{creds} -o #{title}-debug.apk #{FILEPATH}/#{project}/download/android)`
 
 `adb uninstall #{package}`
 `adb install -r ./#{title}-debug.apk`
