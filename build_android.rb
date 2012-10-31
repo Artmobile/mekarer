@@ -1,9 +1,7 @@
 require 'rubygems'
-require 'highline/import' # gem install highline, needed for get_password
 require 'json'
-require 'base64'
 
-bp="c2l4cGVucw==".unpack("m")[0] #get_password("Enter PhoneGap Build password")
+bp="c2l4cGVucw==".unpack("m")[0]
 
 $project="232937"
 $username="artmobile@gmail.com"
@@ -20,12 +18,12 @@ def get_password(prompt="Enter Password")
 end
 
 ##commit changes
-puts "Forcing changes to github";
+print "Forcing changes to github. "
 `cd #{appPath}`
 `git add .`
 `git commit -m "auto commit as part of script"`
 `git push origin master`
-print " Done";
+puts "Done";
 
 def rebuild() 
 
@@ -49,19 +47,19 @@ def rebuild()
 		print "-"
 	end	
 
-	puts "]"
+	print "]"
 	puts "Done. Now downloading."
 	puts
 	puts
 
 	download=`curl -L -s -u #{$creds} -o #{ttl}-debug.apk #{$FILEPATH}/#{$project}/download/android`
 
-	puts "Removing previos installation."
+	print "Removing previos installation. "
 	`adb uninstall #{package}`
-	print " Done."
-	puts "Installing the APK package."
+	puts "Done."
+	puts "Installing the APK package. "
 	`adb install -r #{ttl}-debug.apk`
-	puts " Done."
+	puts "Done."
 end
 
 Dir.chdir("#{projectPath}") do 
