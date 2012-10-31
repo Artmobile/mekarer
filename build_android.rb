@@ -54,7 +54,7 @@ end
 puts
 puts "Done. Now downloading."
 
-download=`curl -L -s -u #{creds} -o #{title}-debug.apk #{FILEPATH}/#{project}/download/android)`
+download=`curl -L -s -u #{creds} -o #{title}-debug.apk #{FILEPATH}/#{project}/download/android`
 
 `adb uninstall #{package}`
 `adb install -r ./#{title}-debug.apk`
